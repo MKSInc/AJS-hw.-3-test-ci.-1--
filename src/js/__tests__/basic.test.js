@@ -1,7 +1,16 @@
-import sum from '../basic';
+import getHPstatus from '../basic';
 
-test('should sum', () => {
-  const result = sum([1, 2, 3]);
+test('result = healthy', () => {
+  const result = getHPstatus({ name: 'Маг', health: 50 });
+  expect(result).toBe('healthy');
+});
 
-  expect(result).toBe(6);
+test('result = wounded', () => {
+  const result = getHPstatus({ name: 'Маг', health: 15 });
+  expect(result).toBe('wounded');
+});
+
+test('result = critical', () => {
+  const result = getHPstatus({ name: 'Маг', health: 0 });
+  expect(result).toBe('critical');
 });
